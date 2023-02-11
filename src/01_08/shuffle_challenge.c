@@ -18,6 +18,8 @@ int main()
 	};
 	int frequency[PSIZE];
 	int x,r,count;
+  
+	int recency[PSIZE] = {0};
 
 	/* initialize */
 	srand( (unsigned)time(NULL) );
@@ -31,7 +33,19 @@ int main()
 	while(count<100)
 	{
 		/* does r appear in recent[]? */
-		r = rand() % PSIZE;		/* random value */
+		while(1)
+		{
+			r = rand() % PSIZE;
+			if(recency[r] >= 0)
+				break;		/* random value */
+		}
+		for (x = 0; x < PSIZE; x++)
+		{
+			if(x = r)
+				recency[x] -= 15;
+			else
+				recency[x]++;
+		}
 		printf("%3d: Now Playing '%s'\n",
 				count+1,
 				playlist[r]

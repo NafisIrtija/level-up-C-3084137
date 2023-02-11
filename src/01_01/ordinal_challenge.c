@@ -2,10 +2,25 @@
 
 char *ordinal(int v)
 {
-	/*
-	   - create this function
-	   - this code won't run with out it!
-	 */
+	char* res = "";
+	if(v%10 == 1 && v/10 != 1)
+	{
+		res = "st";
+	}
+	else if (v % 10 == 2 && v / 10 != 1)
+	{
+		res = "nd";
+	}
+	else if (v % 10 == 3 && v / 10 != 1)
+	{
+		res = "rd";
+	}
+	else 
+	{
+		res = "th";
+	}
+	
+	return res;
 }
 
 int main()

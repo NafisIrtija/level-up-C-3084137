@@ -4,6 +4,35 @@
 #define W_MIN 16
 #define W_DEFAULT 40
 
+void printWrap(char *s)
+{
+	int count = 0;
+	int c = 0;
+	while(s[c] != '\0')
+	{
+		putchar(s[c]);
+		if(s[c] == '\n')
+			count = 0;
+		else	
+			count++;		
+		if(count == W_DEFAULT - 1)
+		{
+			if(s[c+1] == ' ')
+			{
+				putchar(s[c+1]);
+				c++;
+			}		
+			else
+			{
+				putchar('-');
+			}
+			putchar('\n');
+			count = 0;
+		}
+		c++;
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	/* Shakespear's 18th Sonnet */
@@ -21,6 +50,8 @@ Nor shall death brag thou wander'st in his shade, \
 When in eternal lines to time thou grow'st:\n\
 So long as men can breathe or eyes can see, \
 So long lives this, and this gives life to thee.";
+
+printWrap(text);
 
 	return(0);
 }
